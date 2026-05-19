@@ -18,17 +18,21 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps: deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install mdBook
+      - name: Install mdBook and KaTeX plugin
         run: |
-          # Baixa e instala a versão mais recente do mdBook no servidor
+          # Instala o mdBook padrão
           curl -sSL https://github.com/rust-lang/mdBook/releases/latest/download/mdbook-v0.4.43-x86_64-unknown-linux-gnu.tar.gz | tar -xz
           sudo mv mdbook /usr/local/bin/
+          
+          # Instala o plugin do KaTeX (necessário para suas fórmulas matemáticas)
+          curl -sSL https://github.com/luser/mdbook-katex/releases/latest/download/mdbook-katex-v0.9.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          sudo mv mdbook-katex /usr/local/bin/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
