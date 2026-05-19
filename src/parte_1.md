@@ -4,7 +4,7 @@
 - MLX90614
 - GSR
 - MAX30100
-- MPU6050  \text{Wh}
+- MPU6050
 
 ### Base:
 - ESP32-Mini
