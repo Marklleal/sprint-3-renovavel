@@ -1,0 +1,7 @@
+[book]
+title = "sprint 3"
+authors = []
+language = "en"
+
+[output.html]
+mathjax-support = true
